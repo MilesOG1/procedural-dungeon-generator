@@ -22,6 +22,10 @@ public class DungeonGenerator : MonoBehaviour
     public int minRoomSize = 4;   // minimum width/height of a room
     public int maxRoomSize = 10;  // maximum width/height of a room
 
+    [Header("Corridor Settings")]
+    [Range(1, 5)]
+    public int corridorWidth = 3; // how many tiles thick corridors are
+
     [Header("Prefabs & Parents")]
     public GameObject floorPrefab;    // assign in inspector
     public GameObject wallPrefab;     // assign in inspector
@@ -39,6 +43,10 @@ public class DungeonGenerator : MonoBehaviour
 
     // store references to created tile GameObjects so we can destroy them on regenerate
     private List<GameObject> createdTiles = new List<GameObject>();
+
+
+    public GameObject playerPrefab; // assign in Inspector
+    private Vector3 worldPos;
 
     void Start()
     {
@@ -129,6 +137,20 @@ public class DungeonGenerator : MonoBehaviour
 
         // 4) Spawn prefabs to visualize
         DrawMap();
+
+        GameObject playerInstance = SpawnPlayer();
+
+        // Now safely assign the spawned player's transform
+        if (playerInstance != null)
+        {
+            CameraFollow camFollow = Camera.main.GetComponent<CameraFollow>();
+            if (camFollow != null)
+            {
+                camFollow.target = playerInstance.transform;
+            }
+        }
+
+
     }
 
     // carve horizontal corridor on given y across x1..x2
@@ -136,10 +158,15 @@ public class DungeonGenerator : MonoBehaviour
     {
         int start = Mathf.Min(x1, x2);
         int end = Mathf.Max(x1, x2);
+
         for (int x = start; x <= end; x++)
         {
-            if (IsInBounds(x, y))
-                mapGrid[x, y] = 1; // floor
+            for (int w = -corridorWidth / 2; w <= corridorWidth / 2; w++)
+            {
+                int ny = y + w;
+                if (IsInBounds(x, ny))
+                    mapGrid[x, ny] = 1; // floor
+            }     
         }
     }
 
@@ -148,10 +175,15 @@ public class DungeonGenerator : MonoBehaviour
     {
         int start = Mathf.Min(y1, y2);
         int end = Mathf.Max(y1, y2);
+
         for (int y = start; y <= end; y++)
         {
-            if (IsInBounds(x, y))
-                mapGrid[x, y] = 1; // floor
+            for (int w = -corridorWidth / 2; w <= corridorWidth / 2; w++)
+            {
+                int nx = x + w;
+                if (IsInBounds(nx, y))
+                    mapGrid[nx, y] = 1; // floor
+            }
         }
     }
 
@@ -228,6 +260,41 @@ public class DungeonGenerator : MonoBehaviour
         }
         createdTiles.Clear();
     }
+
+    private GameObject SpawnPlayer()
+    {
+        // Find all floor positions
+        List<Vector2Int> floorPositions = new List<Vector2Int>();
+
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                if (mapGrid[x, y] == 1)
+                {
+                    floorPositions.Add(new Vector2Int(x, y));
+                }
+            }
+        }
+
+        if (floorPositions.Count == 0)
+        {
+            Debug.LogWarning("No valid floor tiles found for player spawn!");
+            return null;
+        }
+
+        // Pick a random floor tile
+        Vector2Int spawnPos = floorPositions[Random.Range(0, floorPositions.Count)];
+
+        // Convert grid coords to world position
+        Vector3 worldPos = new Vector3(spawnPos.x, spawnPos.y, 0f);
+
+        // Spawn the player and return the instance
+        GameObject playerInstance = Instantiate(playerPrefab, worldPos, Quaternion.identity);
+        return playerInstance;
+    }
+
+
 
     // for editor convenience: regenerate from inspector
 #if UNITY_EDITOR

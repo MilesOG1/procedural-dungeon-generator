@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Simple top-down movement controller using WASD or arrow keys.
-/// Uses Rigidbody2D for smooth physics-based motion.
-/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f; // movement speed multiplier
+    public float moveSpeed = 5f;
 
+    private Vector2 movement;
     private Rigidbody2D rb;
-    private Vector2 moveInput;
 
     private void Awake()
     {
@@ -20,17 +16,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Get player input (WASD or Arrow keys)
-        float moveX = Input.GetAxisRaw("Horizontal"); // A/D or ←/→
-        float moveY = Input.GetAxisRaw("Vertical");   // W/S or ↑/↓
+        Vector2 movement = Vector2.zero; // Get raw WASD input
 
-        // Combine inputs into a 2D direction vector
-        moveInput = new Vector2(moveX, moveY).normalized;
+        if (Input.GetKey(KeyCode.W))
+            movement.y += 1f;
+        if (Input.GetKey(KeyCode.S))
+            movement.y -= 1f;
+        if (Input.GetKey(KeyCode.A))
+            movement.x -= 1f;
+        if (Input.GetKey(KeyCode.D))
+            movement.x += 1f;
+
+        movement = movement.normalized;
+
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
-        // Move the player based on physics timestep
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        rb.linearVelocity = movement * moveSpeed;
     }
+
 }
