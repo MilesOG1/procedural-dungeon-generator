@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|c:\\users\\miles\\onedrive\\desktop\\code\\procedural-dungeon-generator\\assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|c:\\users\\miles\\onedrive\\desktop\\code\\procedural-dungeon-generator\\assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|c:\\users\\miles\\onedrive\\desktop\\code\\procedural-dungeon-generator\\assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4927DE9F-1433-545F-58FB-4182FAA59601}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -34,25 +34,24 @@
               "RelativeToolTip": "Assets\\Scripts\\CameraFollow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T06:52:39.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-14T06:52:39.054Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T08:32:16.08Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DungeonGenerator.cs",
               "DocumentMoniker": "C:\\Users\\Miles\\OneDrive\\Desktop\\Code\\procedural-dungeon-generator\\Assets\\Scripts\\DungeonGenerator.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGenerator.cs",
