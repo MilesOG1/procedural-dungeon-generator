@@ -1,4 +1,4 @@
-# Procedural Dungeon Generator 🧱
+# Procedural Dungeon Generator 
 
 A Unity-based tool that procedurally generates 2D dungeons using random rooms and corridors.
 
